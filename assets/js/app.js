@@ -395,6 +395,8 @@ function createVectorLayer(name, data, key, save) {
       "features": data
     };
 
+    console.log(value);
+
     featureStore.setItem(key, value).then((value) => {
       addOverlayLayer(layer, name, null, true);
       layers.overlays[L.Util.stamp(layer)] = layer;
