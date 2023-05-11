@@ -309,11 +309,13 @@ function loadVector(file, name, format) {
         options.latfield = "Y",
         options.lonfield = "X"
       }
+      console.log(data);
       csv2geojson.csv2geojson(reader.result, options, function(err, data) {
         if (data) {
           geojson = data;
         }
       });
+      console.log(geojson);
     }
 
     createVectorLayer(name, geojson, null, true);
