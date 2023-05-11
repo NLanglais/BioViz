@@ -234,8 +234,7 @@ function distance(){
     var distlat = (lat*Math.PI*6371)/180;
     var distlng = (lng*Math.PI*6371)/180;
     var ret = Math.pow(distlat, 2) + Math.pow(distlng, 2);
-    ret = Math.sqrt(ret);
-    console.log(ret);
+    ret = Math.sqrt(ret)*1000;
     calc = 0;
     alert("La distance entre les deux points donnés est de "+ret+" m");
   }else{
@@ -402,7 +401,7 @@ function createVectorLayer(name, data, key, save) {
       layer.addTo(map);
       zoomToLayer(L.Util.stamp(layer));
     }).catch((err) => {
-      alert("Erreur en sauvegardant les données!");
+      alert("Erreur en sauvegardant les données!1");
     });
   } else {
     addOverlayLayer(layer, name, null, true);
@@ -438,7 +437,7 @@ function createRasterLayer(name, data) {
     mapStore.setItem(key, value).then((value) => {
       addOverlayLayer(layer, name, null, false);
     }).catch((err) => {
-      alert("Erreur en sauvegardant les données!");
+      alert("Erreur en sauvegardant les données!2");
     }); 
 
   }).addTo(map);
@@ -741,7 +740,7 @@ function fetchFile(url) {
           mapStore.setItem(url, value).then((value) => {
             addOverlayLayer(layer, name);
           }).catch((err) => {
-            alert("Erreur en sauvegardant les données!");
+            alert("Erreur en sauvegardant les données!3");
           }); 
         }).addTo(map);
         layers.overlays[L.Util.stamp(layer)] = layer; 
