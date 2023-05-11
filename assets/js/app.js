@@ -309,8 +309,8 @@ function loadVector(file, name, format) {
         options.latfield = "Y",
         options.lonfield = "X"
       }
-      console.log(data);
       csv2geojson.csv2geojson(reader.result, options, function(err, data) {
+        console.log(data);
         if (data) {
           geojson = data;
         }
