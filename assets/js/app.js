@@ -625,7 +625,7 @@ function loadCustomBasemaps(config) {
     let layer = null;
     if (element.type == "wms") {
       layer = L.tileLayer.wms(element.url, {
-        maxNativeZoom: element.maxZoom ? element.maxZoom : 18,
+        maxNativeZoom: element.maxZoom ? element.maxZoom : 22,
         maxZoom: map.getMaxZoom(),
         layers: element.layers,
         format: element.format ? element.format : "image/png",
@@ -633,7 +633,7 @@ function loadCustomBasemaps(config) {
       });
     } else if (element.type == "xyz") {
       layer = L.tileLayer(element.url, {
-        maxNativeZoom: element.maxZoom ? element.maxZoom : 18,
+        maxNativeZoom: element.maxZoom ? element.maxZoom : 22,
         maxZoom: map.getMaxZoom(),
         attribution: element.attribution ? element.attribution : ""
       }); 
