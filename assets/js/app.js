@@ -291,9 +291,9 @@ function surface(a){
     }else{
       var sum = 0;
       for(var i = 0; i < n-1; i++){
-        sum += (lstpts[i+1].lat+lstpts[i].lat)*(lstpts[i+1].lng-lstpts[i].lng);
+        sum += ((lstpts[i+1].lat+lstpts[i].lat)*1000)*((lstpts[i+1].lng-lstpts[i].lng)*1000);
       }
-      sum += (lstpts[0].lat+lstpts[n-1].lat)*(lstpts[0].lng-lstpts[n-1].lng);
+      sum += ((lstpts[0].lat+lstpts[n-1].lat)*1000)*((lstpts[0].lng-lstpts[n-1].lng)*1000);
       surf = 0.5*sum;
       alert("La surface demandée est de "+surf+" m²");
       lstpts = [];
