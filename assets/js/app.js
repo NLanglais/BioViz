@@ -290,11 +290,10 @@ function surface(a){
       controls.surfAddCtrl.getContainer().classList.add("invisible-control");
     }else{
       var sum = 0;
-      console.log(lstpts);
-      for(var i = 0; i < n; i++){
-        sum += (lstpts[i+1][0]+lstpts[i][0])*(lstpts[i+1][1]-lstpts[i][1])
+      for(var i = 0; i < n-1; i++){
+        sum += (lstpts[i+1].lat+lstpts[i].lat)*(lstpts[i+1].lng-lstpts[i].lng);
       }
-      sum += (lstpts[0][0]+lstpts[-1][0])*(lstpts[0][1]-lstpts[-1][1])
+      sum += (lstpts[0].lat+lstpts[n-1].lat)*(lstpts[0].lng-lstpts[n-1].lng);
       surf = 0.5*sum;
       alert("La surface demandée est de "+surf+" m²");
       lstpts = [];
