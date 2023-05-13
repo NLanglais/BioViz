@@ -169,8 +169,6 @@ L.control.surface = (opts) => {
 L.Control.SurfAdd = L.Control.extend({
   onAdd: function(map) {
 
-    surfAddCtrl.getContainer().classList.add("invisible-control");
-
     div5 = L.DomUtil.create("div","leaflet-bar leaflet-control");
 
     div5.addEventListener("click", function (){
@@ -255,6 +253,8 @@ const controls = {
     position: "bottomleft",
   }).addTo(map)
 };
+
+surfAddCtrl.getContainer().classList.add("invisible-control");
 
 var calc = 0;
 var lat = "";
