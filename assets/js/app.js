@@ -185,6 +185,7 @@ L.Control.SurfAdd = L.Control.extend({
     L.DomEvent.on(div6, "click", function (e) {
       L.DomEvent.stopPropagation(e);
     });
+    controls.surfAddCtrl.getContainer().classList.add("invisible-control");
     return div6
   }
 });
