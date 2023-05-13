@@ -165,6 +165,35 @@ L.control.surface = (opts) => {
 }
 /*** Fin du controleur customisé ***/
 
+/*** Début du controleur customisé pour ajouter un point lors du calcul d'une surface ***/
+L.Control.SurfAdd = L.Control.extend({
+  onAdd: function(map) {
+
+    div5 = L.DomUtil.create("div","leaflet-bar leaflet-control");
+
+    div5.addEventListener("click", function (){
+      surface(1);
+    },false);
+
+
+    const div6 = L.DomUtil.create("div", "leaflet-bar leaflet-control");
+    div6.innerHTML = `
+      <a class='leaflet-bar-part leaflet-bar-part-single file-control-btn' href="#" title='Ajouter un point' onclick='div5.click();'>
+        <i class='icon-add'></i>
+      </a>
+    `;
+    L.DomEvent.on(div6, "click", function (e) {
+      L.DomEvent.stopPropagation(e);
+    });
+    return div6
+  }
+});
+
+L.control.surfAdd = (opts) => {
+  return new L.Control.SurfAdd(opts);
+}
+/*** Fin du controleur customisé ***/
+
 const controls = {
   layerCtrl: L.control.layers(layers.basemaps, null, {
     collapsed: true,
@@ -225,35 +254,10 @@ const controls = {
   }).addTo(map)
 };
 
-/*** Début du controleur customisé pour ajouter un point lors du calcul d'une surface ***/
-L.Control.SurfAdd = L.Control.extend({
-  onAdd: function(map) {
-
-    div5 = L.DomUtil.create("div","leaflet-bar leaflet-control");
-
-    div5.addEventListener("click", function (){
-      surface(1);
-    },false);
-
-
-    const div6 = L.DomUtil.create("div", "leaflet-bar leaflet-control");
-    div6.innerHTML = `
-      <a class='leaflet-bar-part leaflet-bar-part-single file-control-btn' href="#" title='Ajouter un point' onclick='div5.click();'>
-        <i class='icon-add'></i>
-      </a>
-    `;
-    L.DomEvent.on(div6, "click", function (e) {
-      L.DomEvent.stopPropagation(e);
-    });
-    surfAddCtrl.getContainer().classList.add("invisible-control");
-    return div6
-  }
+window.addEventListener("load", function() {
+  // Masquer le contrôleur
+  surfAddCtrl.getContainer().classList.add("invisible-control");
 });
-
-L.control.surfAdd = (opts) => {
-  return new L.Control.SurfAdd(opts);
-}
-/*** Fin du controleur customisé ***/
 
 var calc = 0;
 var lat = "";
