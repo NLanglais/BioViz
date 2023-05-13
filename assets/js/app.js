@@ -287,7 +287,7 @@ function surface(a){
     if(n==1){
       alert("Impossible de calculer la surface pour un seul point");
       lstpts = [];
-      controls.surfAddCtrl.getContainer().classList.remove("invisible-control");
+      controls.surfAddCtrl.getContainer().classList.add("invisible-control");
     }else{
       var sum = 0;
       for(var i = 0; i < n; i++){
