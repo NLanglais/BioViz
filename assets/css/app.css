@@ -207,6 +207,11 @@ table tr:nth-child(even) {
   -webkit-animation-delay: 1.15s;
   animation-delay: 1.15s;
 }
+
+.invisible-control {
+  display: none;
+}
+
 @-webkit-keyframes indeterminate {
   0% {
     left: -35%;

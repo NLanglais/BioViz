@@ -143,14 +143,14 @@ L.Control.Surface = L.Control.extend({
     div3 = L.DomUtil.create("div","leaflet-bar leaflet-control");
 
     div3.addEventListener("click", function (){
-      surface();
+      surface(0);
     },false);
 
 
     const div4 = L.DomUtil.create("div", "leaflet-bar leaflet-control");
     div4.innerHTML = `
       <a class='leaflet-bar-part leaflet-bar-part-single file-control-btn' href="#" title='Mesurer Surface' onclick='div3.click();'>
-        <i class='icon-add'></i>
+        <i class='icon-pencil'></i>
       </a>
     `;
     L.DomEvent.on(div4, "click", function (e) {
@@ -162,6 +162,37 @@ L.Control.Surface = L.Control.extend({
 
 L.control.surface = (opts) => {
   return new L.Control.Surface(opts);
+}
+/*** Fin du controleur customisé ***/
+
+/*** Début du controleur customisé pour ajouter un point lors du calcul d'une surface ***/
+L.Control.SurfAdd = L.Control.extend({
+  onAdd: function(map) {
+
+    surfAddCtrl.getContainer().classList.add("invisible-control");
+
+    div5 = L.DomUtil.create("div","leaflet-bar leaflet-control");
+
+    div5.addEventListener("click", function (){
+      surface(1);
+    },false);
+
+
+    const div6 = L.DomUtil.create("div", "leaflet-bar leaflet-control");
+    div6.innerHTML = `
+      <a class='leaflet-bar-part leaflet-bar-part-single file-control-btn' href="#" title='Ajouter un point' onclick='div5.click();'>
+        <i class='icon-add'></i>
+      </a>
+    `;
+    L.DomEvent.on(div6, "click", function (e) {
+      L.DomEvent.stopPropagation(e);
+    });
+    return div6
+  }
+});
+
+L.control.surfAdd = (opts) => {
+  return new L.Control.SurfAdd(opts);
 }
 /*** Fin du controleur customisé ***/
 
@@ -213,7 +244,11 @@ const controls = {
   }).addTo(map),
 
   surfCtrl: L.control.surface({
-    position: "bottomleft"
+    position: "topleft"
+  }).addTo(map),
+
+  surfAddCtrl: L.control.surfAdd({
+    position: "topleft"
   }).addTo(map),
 
   distCtrl: L.control.distance({
@@ -246,8 +281,8 @@ function distance(){
 }
 
 var lstpts = [];
-function surface(){
-  if(lstpts[0]==controls.locateCtrl._marker.getLatLng()){
+function surface(a){
+  if(lstpts != [] && a==0){
     var n = lstpts.length;
     if(n==1){
       alert("Impossible de calculer la surface pour un seul point");
@@ -257,12 +292,17 @@ function surface(){
       for(var i = 0; i < n; i++){
         sum += (lstpts[i+1][0]+lstpts[i][0])*(lstpts[i+1][1]-lstpts[i][1])
       }
+      sum += (lstpts[0][0]+lstpts[-1][0])*(lstpts[0][1]-lstpts[-1][1])
       surf = 0.5*sum;
       alert("La surface demandée est de "+surf+" m²");
       lstpts = [];
+      surfAddCtrl.getContainer().classList.add("invisible-control");
     }
     
   }else{
+    if(a==0){
+      surfAddCtrl.getContainer().classList.remove("invisible-control");
+    }
     lstpts[lstpts.length] = controls.locateCtrl._marker.getLatLng();
   }
 }
