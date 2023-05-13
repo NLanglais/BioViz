@@ -290,6 +290,7 @@ function surface(a){
       controls.surfAddCtrl.getContainer().classList.add("invisible-control");
     }else{
       var sum = 0;
+      console.log(lstpts);
       for(var i = 0; i < n; i++){
         sum += (lstpts[i+1][0]+lstpts[i][0])*(lstpts[i+1][1]-lstpts[i][1])
       }
