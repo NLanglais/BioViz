@@ -185,6 +185,7 @@ L.Control.SurfAdd = L.Control.extend({
     L.DomEvent.on(div6, "click", function (e) {
       L.DomEvent.stopPropagation(e);
     });
+    surfAddCtrl.getContainer().classList.add("invisible-control");
     return div6
   }
 });
@@ -246,15 +247,13 @@ const controls = {
   }).addTo(map),
 
   surfAddCtrl: L.control.surfAdd({
-    position: "topleft"
+    position: "topleft",
   }).addTo(map),
 
   distCtrl: L.control.distance({
     position: "bottomleft",
   }).addTo(map)
 };
-
-surfAddCtrl.getContainer().classList.add("invisible-control");
 
 var calc = 0;
 var lat = "";
