@@ -282,7 +282,7 @@ function distance(){
 
 var lstpts = [];
 function surface(a){
-  if(lstpts != [] && a==0){
+  if(lstpts.length !==0 && a==0){
     var n = lstpts.length;
     if(n==1){
       alert("Impossible de calculer la surface pour un seul point");
@@ -296,12 +296,12 @@ function surface(a){
       surf = 0.5*sum;
       alert("La surface demandée est de "+surf+" m²");
       lstpts = [];
-      surfAddCtrl.getContainer().classList.add("invisible-control");
+      controls.surfAddCtrl.getContainer().classList.add("invisible-control");
     }
     
   }else{
     if(a==0){
-      surfAddCtrl.getContainer().classList.remove("invisible-control");
+      controls.surfAddCtrl.getContainer().classList.remove("invisible-control");
     }
     lstpts[lstpts.length] = controls.locateCtrl._marker.getLatLng();
   }
