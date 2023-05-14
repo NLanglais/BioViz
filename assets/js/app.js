@@ -310,6 +310,7 @@ function surface(a){
     if(a==0){
       controls.surfAddCtrl.getContainer().classList.remove("invisible-control");
       map.removeLayer(polygon);
+      polygon = [];
     }
     lstpts[lstpts.length] = controls.locateCtrl._marker.getLatLng();
   }
