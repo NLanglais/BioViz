@@ -299,7 +299,7 @@ function surface(a){
         polygon[i] = [lstpts[i].lat,lstpts[i].lng];
       }
       
-      surf = Math.abs(sum*Math.cos(lstpts[0].lat * Math.PI / 180) * 6371 * 6371 * 1000);
+      surf = Math.abs(sum*Math.cos(lstpts[0].lat * Math.PI / 180) * 6371  * 1000);
       alert("La surface demandée est de "+surf+" m²");
       polygon = L.polygon(polygon, {color: 'red'}).addTo(map);
       lstpts = [];
