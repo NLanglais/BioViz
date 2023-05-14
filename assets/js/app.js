@@ -259,11 +259,12 @@ controls.surfAddCtrl.getContainer().classList.add("invisible-control");
 var calc = 0;
 var lat = "";
 var lng = "";
+var line = [];
 function distance(){
   
   if(calc == 1){
     const loc = controls.locateCtrl._marker.getLatLng();
-    console.log(loc);
+    line = L.polyline([[lat,lng],[loc.lat.toFixed(6),loc.lng.toFixed(6)]],{color: 'blue'}).addTo(map);
     lat = lat - loc.lat.toFixed(6);
     lng = lng - loc.lng.toFixed(6);
     var distlat = (lat*Math.PI*6371)/180;
@@ -273,6 +274,7 @@ function distance(){
     calc = 0;
     alert("La distance entre les deux points donnés est de "+ret+" m");
   }else{
+    map.removeLayer(line);
     const loc = controls.locateCtrl._marker.getLatLng();
     lng = loc.lng.toFixed(6);
     lat = loc.lat.toFixed(6);
@@ -281,6 +283,7 @@ function distance(){
 }
 
 var lstpts = [];
+var polygon = [];
 function surface(a){
   if(lstpts.length !==0 && a==0){
     var n = lstpts.length;
@@ -290,12 +293,15 @@ function surface(a){
       controls.surfAddCtrl.getContainer().classList.add("invisible-control");
     }else{
       var sum = 0;
+      
       for(var i = 0; i < n; i++){
         sum += (lstpts[(i+1)%n].lat-lstpts[i].lat)*(lstpts[(i+1)%n].lng-lstpts[i].lng);
+        polygon[i] = [lstpts[i].lat,lstpts[i].lng];
       }
       
       surf = Math.abs(sum*Math.cos(lstpts[0].lat * Math.PI / 180) * 6371 * 6371 * 1000);
       alert("La surface demandée est de "+surf+" m²");
+      polygon = L.polygon(polygon, {color: 'red'}).addTo(map);
       lstpts = [];
       controls.surfAddCtrl.getContainer().classList.add("invisible-control");
     }
@@ -303,6 +309,7 @@ function surface(a){
   }else{
     if(a==0){
       controls.surfAddCtrl.getContainer().classList.remove("invisible-control");
+      map.removeLayer(polygon);
     }
     lstpts[lstpts.length] = controls.locateCtrl._marker.getLatLng();
   }
