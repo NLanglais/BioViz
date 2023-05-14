@@ -290,9 +290,9 @@ function surface(a){
       controls.surfAddCtrl.getContainer().classList.add("invisible-control");
     }else{
       var sum = 0;
-      
+
       for(var i = 0; i < n; i++){
-        sum += ((lstpts[(i+1)%n].lat-lstpts[i].lat)*1000)*((lstpts[(i+1)%n].lng+lstpts[i].lng)*1000);
+        sum += ((lstpts[i].lat-lstpts[(i+1)%n].lat)*1000)*((lstpts[(i+1)%n].lng+lstpts[i].lng)*1000);
       }
 
       surf = Math.abs(0.5*sum);
