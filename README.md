@@ -1,4 +1,4 @@
-##ReadME BioViz
+##BioViz
 
 ####Installation :
 	Avec votre mobile vous devez aller sur l'url suivant : https://nlanglais.github.io/BioViz/
