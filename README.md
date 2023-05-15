@@ -1,17 +1,19 @@
-##ReadME BioViz
+## BioViz
 
-####Installation :
-	Avec votre mobile vous devez aller sur l'url suivant : https://nlanglais.github.io/BioViz/
+#### Installation :
+Avec votre mobile vous devez aller sur l'url suivant : https://nlanglais.github.io/BioViz/
+
 Vous pouvez également passer par le site de présentation : https://louise-redlinger.github.io/AMIE/
+
 Une fois cela fait vous devez appuyer sur le bouton installer en haut à droite de votre écran, cela permettra de télécharger le site sur votre téléphone. Il suffit ensuite de cliquer sur l'icône pour ouvrir le site téléchargé.
 
-####Ouverture de l'application en ligne :
+#### Ouverture de l'application en ligne :
 
-	Ouvrez l’application avec l’explorateur internet de votre choix, (il est déconseillé d'utiliser firefox qui ne permet pas d'ouvrir certaines couches). Vous allez voir apparaître sur l’écran l’application ainsi que les différentes fonctionnalités possibles.
+Ouvrez l’application avec l’explorateur internet de votre choix, (il est déconseillé d'utiliser firefox qui ne permet pas d'ouvrir certaines couches). Vous allez voir apparaître sur l’écran l’application ainsi que les différentes fonctionnalités possibles.
 
-####Fonctionnalités :
+#### Fonctionnalités :
 
-  Tout d’abord le choix du fond de carte en haut à droite de l’écran, certains fonds de cartes ne s'affichent qu'à partir d'un certain niveau de zoom, on peut également décider de ne pas en mettre.
+Tout d’abord le choix du fond de carte en haut à droite de l’écran, certains fonds de cartes ne s'affichent qu'à partir d'un certain niveau de zoom, on peut également décider de ne pas en mettre.
 
 Vous pouvez dans un deuxième temps charger les couches téléchargées. Pour ce faire, cliquez sur le bouton plus en dessous du bouton de localisation en bas à droite. Choisissez sélectionner un fichier et allez dans la mémoire interne sélectionner une par une les couches que vous avez importées du tuileur. Une fois une couche sélectionnée, appuyez sur valider et entrez ensuite le nom souhaité pour la couche. La couche s'affiche dans le bouton en haut à gauche où il est possible de contrôler la transparence ainsi que la possibilité de zoomer dessus et de la supprimer.
 
